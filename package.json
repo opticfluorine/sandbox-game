@@ -20,5 +20,10 @@
   "scripts": {
     "build": "webpack",
     "serve": "webpack serve"
+  },
+  "dependencies": {
+    "bitecs": "^0.3.21-9",
+    "sparse-octree": "^7.1.2",
+    "three": "^0.133.0"
   }
 }

@@ -332,6 +332,11 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
+bitecs@^0.3.21-9:
+  version "0.3.21-9"
+  resolved "https://registry.yarnpkg.com/bitecs/-/bitecs-0.3.21-9.tgz#48fe13d6fe03ca89b2abf7518c80917c0d099919"
+  integrity sha512-7LXgrBHB1nt0fg+g6bhk8SrEKgEgrc53jhg4TzWcI08zoAaMuNM08vK+UIFDp7eCswAifBvfQ+9VS+I4OrXEFw==
+
 body-parser@1.19.0:
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.19.0.tgz#96b2709e57c9c4e09a6fd66a8fd979844f69f08a"
@@ -2223,6 +2228,11 @@ source-map@~0.7.2:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
 
+sparse-octree@^7.1.2:
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/sparse-octree/-/sparse-octree-7.1.2.tgz#8410f90f0f9995ee450a43af54d8afd5b8d2fe85"
+  integrity sha512-6NY7XFEnoRP8syR5G5elQkgdtR3/X+WWpsB5EW1FuyEPobhE432ZAYbpULFskfAtOTx8iyB7RgtQ96BkdP49gA==
+
 spdy-transport@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/spdy-transport/-/spdy-transport-3.0.0.tgz#00d4863a6400ad75df93361a1608605e5dcdcf31"
@@ -2337,6 +2347,11 @@ terser@^5.7.2:
     commander "^2.20.0"
     source-map "~0.7.2"
     source-map-support "~0.5.20"
+
+three@^0.133.0:
+  version "0.133.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.133.0.tgz#41427306c731a89407221b7be48c7a63580400e7"
+  integrity sha512-1p8xTXnJD4hMM2Ktm7+FqOOBoImBoftKnKtAZT/b9AQeL3LhRkVu/HnIJhWA69qIMvUYpjfnunNsO4WdObw1ZQ==
 
 thunky@^1.0.2:
   version "1.1.0"

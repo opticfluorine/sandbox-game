@@ -22,9 +22,9 @@
  * SOFTWARE. 
 */
 
-require("./index.css");
+import {autoInjectable} from "tsyringe";
 
-import {Game} from "./Game";
-
-// Run the game.
-const game = new Game();
+@autoInjectable()
+export class Game {
+    constructor() {}
+}

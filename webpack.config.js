@@ -15,6 +15,11 @@ module.exports = {
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+                exclude: /node_modules/,
+            },
         ],
     },
     resolve: {
@@ -27,6 +32,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             inject: "body",
+            showErrors: false,
         }),
     ],
     performance: {
@@ -34,5 +40,5 @@ module.exports = {
         maxEntrypointSize: 512000,
         maxAssetSize: 512000,
     },
-    mode: 'production',
+    mode: 'development',
 };

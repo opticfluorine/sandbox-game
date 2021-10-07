@@ -26,10 +26,28 @@ import {container, singleton} from "tsyringe";
 
 import {DisplayManager} from "./Display/DisplayManager";
 
+/**
+ * Main class for the game. Root of the dependency graph.
+ */
 @singleton()
 export class Game {
-    public constructor(displayManager? : DisplayManager) {
+    public constructor(displayManager : DisplayManager) {
         this.displayManager = displayManager;
+    }
+
+    /** Starts the game. */
+    public start() {
+        const displayManager = this.displayManager;
+        function main() {
+            // Schedule next frame entry.
+            window.requestAnimationFrame(main);
+
+            // Advance game state.
+
+            // Render.
+            displayManager.doRender();
+        }
+        main();
     }
 
     /** Display manager. */

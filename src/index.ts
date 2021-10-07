@@ -31,3 +31,4 @@ import {Game} from "./Game";
 
 // Run the game.
 const game = container.resolve(Game);
+game.start();

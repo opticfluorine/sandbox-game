@@ -26,6 +26,13 @@ import {container} from "tsyringe";
 
 export class DisplayManager {
 
+    /**
+     * Renders a single frame.
+     */
+    public doRender() {
+
+    }
+
 }
 
 container.register<DisplayManager>(DisplayManager, {useClass: DisplayManager});

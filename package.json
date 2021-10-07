@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "bitecs": "^0.3.21-9",
+    "reflect-metadata": "^0.1.13",
     "sparse-octree": "^7.1.2",
     "three": "^0.133.0",
     "tsyringe": "^4.6.0"

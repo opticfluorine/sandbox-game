@@ -22,9 +22,18 @@
  * SOFTWARE. 
 */
 
-import {autoInjectable} from "tsyringe";
+import {container, singleton} from "tsyringe";
 
-@autoInjectable()
+import {DisplayManager} from "./Display/DisplayManager";
+
+@singleton()
 export class Game {
-    constructor() {}
+    public constructor(displayManager? : DisplayManager) {
+        this.displayManager = displayManager;
+    }
+
+    /** Display manager. */
+    private displayManager : DisplayManager;
 }
+
+container.register<Game>(Game, {useClass: Game});

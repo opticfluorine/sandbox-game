@@ -22,12 +22,10 @@
  * SOFTWARE. 
 */
 
-require("./index.css");
-
-import "reflect-metadata";
 import {container} from "tsyringe";
 
-import {Game} from "./Game";
+export class DisplayManager {
 
-// Run the game.
-const game = container.resolve(Game);
+}
+
+container.register<DisplayManager>(DisplayManager, {useClass: DisplayManager});

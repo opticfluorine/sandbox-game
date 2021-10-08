@@ -37,15 +37,34 @@ export class Game {
 
     /** Starts the game. */
     public start() {
+        // Initialize.
+        try {
+            this.displayManager.initialize();
+        } catch (e) {
+            console.error(e);
+        }
+
+        // Start the main loop.
+        this.doMainLoop();
+    }
+
+    /** Starts the main loop. */
+    private doMainLoop() {
+
+        // Execute the main loop.
         const displayManager = this.displayManager;
         function main() {
             // Schedule next frame entry.
             window.requestAnimationFrame(main);
 
-            // Advance game state.
+            try {
+                // Advance game state.
 
-            // Render.
-            displayManager.doRender();
+                // Render.
+                displayManager.doRender();
+            } catch (e) {
+                console.error(e);
+            }
         }
         main();
     }

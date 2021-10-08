@@ -26,12 +26,44 @@ import {container} from "tsyringe";
 
 export class DisplayManager {
 
+    public constructor() {
+        // Grab canvas to use for rendering.
+        const maybeCanvas = document.getElementById('canvas');
+        if (maybeCanvas != null && maybeCanvas instanceof HTMLCanvasElement) {
+            this.canvas = maybeCanvas;
+        } else {
+            throw new Error("No suitable canvas found.");
+        }
+
+        // Pull out a WebGL2 context.
+        const maybeContext = this.canvas.getContext('webgl2');
+        if (maybeContext != null && maybeContext instanceof WebGL2RenderingContext) {
+            this.gl = maybeContext;
+        } else {
+            throw new Error("No WebGL2 context available for canvas.");
+        }
+    }
+
+    /**
+     * Initializes the display.
+     */
+    public initialize() {
+
+    }
+
     /**
      * Renders a single frame.
      */
     public doRender() {
-
+        this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
+        this.gl.clear(this.gl.COLOR_BUFFER_BIT);
     }
+
+    /** Canvas used for rendering. */
+    private canvas : HTMLCanvasElement;
+
+    /** WebGL2 context associated with the canvas. */
+    private gl : WebGL2RenderingContext;
 
 }
 

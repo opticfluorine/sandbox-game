@@ -74,6 +74,7 @@ export class Game {
 
                 // Send outputs (rendering, audio, etc).
                 game.displayManager.doRender();
+
             } catch (e) {
                 console.error(e);
             }

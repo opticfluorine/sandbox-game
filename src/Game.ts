@@ -22,17 +22,25 @@
  * SOFTWARE. 
 */
 
-import {container, singleton} from "tsyringe";
+import { container, singleton } from "tsyringe";
 
-import {DisplayManager} from "./Display/DisplayManager";
+import { DisplayManager } from "./Display/DisplayManager";
+import { GameStateManager } from "./GameState/GameStateManager";
+import { InputManager } from "./Input/InputManager";
 
 /**
  * Main class for the game. Root of the dependency graph.
  */
 @singleton()
 export class Game {
-    public constructor(displayManager : DisplayManager) {
+    public constructor(
+        displayManager : DisplayManager,
+        gameStateManager : GameStateManager,
+        inputManager : InputManager) 
+    {
         this.displayManager = displayManager;
+        this.gameStateManager = gameStateManager;
+        this.inputManager = inputManager;
     }
 
     /** Starts the game. */
@@ -52,16 +60,20 @@ export class Game {
     private doMainLoop() {
 
         // Execute the main loop.
-        const displayManager = this.displayManager;
+        const game = this;
         function main() {
             // Schedule next frame entry.
             window.requestAnimationFrame(main);
 
             try {
-                // Advance game state.
+                // Accept inputs.
+                game.inputManager.doInputProcessing();
 
-                // Render.
-                displayManager.doRender();
+                // Advance game state by one frame.
+                game.gameStateManager.doUpdateGameState();
+
+                // Send outputs (rendering, audio, etc).
+                game.displayManager.doRender();
             } catch (e) {
                 console.error(e);
             }
@@ -71,6 +83,13 @@ export class Game {
 
     /** Display manager. */
     private displayManager : DisplayManager;
+
+    /** Game state manager. */
+    private gameStateManager : GameStateManager;
+
+    /** Input manager. */
+    private inputManager : InputManager;
+
 }
 
 container.register<Game>(Game, {useClass: Game});

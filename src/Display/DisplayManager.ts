@@ -22,11 +22,15 @@
  * SOFTWARE. 
 */
 
-import {container} from "tsyringe";
+import {container, injectable} from "tsyringe";
+import { Renderer } from "./Renderer";
 
+@injectable()
 export class DisplayManager {
 
-    public constructor() {
+    public constructor(renderer : Renderer) {
+        this.renderer = renderer;
+
         // Grab canvas to use for rendering.
         const maybeCanvas = document.getElementById('canvas');
         if (maybeCanvas != null && maybeCanvas instanceof HTMLCanvasElement) {
@@ -55,9 +59,11 @@ export class DisplayManager {
      * Renders a single frame.
      */
     public doRender() {
-        this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
-        this.gl.clear(this.gl.COLOR_BUFFER_BIT);
+        this.renderer.doRender(this.gl);
     }
+
+    /** Renderer. */
+    private renderer : Renderer;
 
     /** Canvas used for rendering. */
     private canvas : HTMLCanvasElement;

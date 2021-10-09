@@ -25,10 +25,10 @@
 import {container} from 'tsyringe';
 
 export class GameStateManager {
-  /** Advances the game state by a single frame. */
-  public doUpdateGameState() {
+    /** Advances the game state by a single frame. */
+    public doUpdateGameState() {
 
-  }
+    }
 }
 
 container.register<GameStateManager>(GameStateManager, {useClass: GameStateManager});

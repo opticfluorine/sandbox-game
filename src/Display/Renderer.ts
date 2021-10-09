@@ -25,12 +25,12 @@
 import {container} from 'tsyringe';
 
 export class Renderer {
-  /** Renders the next frame. */
-  public doRender(gl : WebGL2RenderingContext) {
+    /** Renders the next frame. */
+    public doRender(gl : WebGL2RenderingContext) {
     // Clear screen.
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
-    gl.clear(gl.COLOR_BUFFER_BIT);
-  }
+        gl.clearColor(0.0, 0.0, 0.0, 1.0);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+    }
 }
 
 container.register<Renderer>(Renderer, {useClass: Renderer});

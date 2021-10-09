@@ -25,10 +25,10 @@
 import {container} from 'tsyringe';
 
 export class InputManager {
-  /** Processes current user inputs. */
-  public doInputProcessing() {
+    /** Processes current user inputs. */
+    public doInputProcessing() {
 
-  }
+    }
 }
 
 container.register<InputManager>(InputManager, {useClass: InputManager});

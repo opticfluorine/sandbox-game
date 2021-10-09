@@ -33,57 +33,57 @@ import {InputManager} from './Input/InputManager';
  */
 @singleton()
 export class Game {
-  /**
+    /**
    * Creates the game.
    * @param displayManager Display manager.
    * @param gameStateManager Game state manager.
    * @param inputManager Input manager.
    */
-  public constructor(
-      displayManager : DisplayManager,
-      gameStateManager : GameStateManager,
-      inputManager : InputManager) {
-    this.displayManager = displayManager;
-    this.gameStateManager = gameStateManager;
-    this.inputManager = inputManager;
-  }
+    public constructor(
+        displayManager : DisplayManager,
+        gameStateManager : GameStateManager,
+        inputManager : InputManager) {
+        this.displayManager = displayManager;
+        this.gameStateManager = gameStateManager;
+        this.inputManager = inputManager;
+    }
 
-  /** Starts the game. */
-  public start() {
+    /** Starts the game. */
+    public start() {
     // Initialize.
-    try {
-      this.displayManager.initialize();
-    } catch (e) {
-      console.error(e);
+        try {
+            this.displayManager.initialize();
+        } catch (e) {
+            console.error(e);
+        }
+
+        // Start the main loop.
+        this.doMainLoop();
     }
 
-    // Start the main loop.
-    this.doMainLoop();
-  }
+    /** Starts the main loop. */
+    private doMainLoop() {
+        // Execute the main loop.
+        const game = this;
+        function main() {
+            // Schedule next frame entry.
+            window.requestAnimationFrame(main);
 
-  /** Starts the main loop. */
-  private doMainLoop() {
-    // Execute the main loop.
-    const game = this;
-    function main() {
-      // Schedule next frame entry.
-      window.requestAnimationFrame(main);
+            try {
+                // Accept inputs.
+                game.inputManager.doInputProcessing();
 
-      try {
-        // Accept inputs.
-        game.inputManager.doInputProcessing();
+                // Advance game state by one frame.
+                game.gameStateManager.doUpdateGameState();
 
-        // Advance game state by one frame.
-        game.gameStateManager.doUpdateGameState();
-
-        // Send outputs (rendering, audio, etc).
-        game.displayManager.doRender();
-      } catch (e) {
-        console.error(e);
-      }
+                // Send outputs (rendering, audio, etc).
+                game.displayManager.doRender();
+            } catch (e) {
+                console.error(e);
+            }
+        }
+        main();
     }
-    main();
-  }
 
     /** Display manager. */
     private displayManager : DisplayManager;

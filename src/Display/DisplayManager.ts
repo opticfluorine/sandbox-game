@@ -27,39 +27,39 @@ import {Renderer} from './Renderer';
 
 @injectable()
 export class DisplayManager {
-  public constructor(renderer : Renderer) {
-    this.renderer = renderer;
+    public constructor(renderer : Renderer) {
+        this.renderer = renderer;
 
-    // Grab canvas to use for rendering.
-    const maybeCanvas = document.getElementById('canvas');
-    if (maybeCanvas != null && maybeCanvas instanceof HTMLCanvasElement) {
-      this.canvas = maybeCanvas;
-    } else {
-      throw new Error('No suitable canvas found.');
+        // Grab canvas to use for rendering.
+        const maybeCanvas = document.getElementById('canvas');
+        if (maybeCanvas != null && maybeCanvas instanceof HTMLCanvasElement) {
+            this.canvas = maybeCanvas;
+        } else {
+            throw new Error('No suitable canvas found.');
+        }
+
+        // Pull out a WebGL2 context.
+        const maybeContext = this.canvas.getContext('webgl2');
+        if (maybeContext != null && maybeContext instanceof WebGL2RenderingContext) {
+            this.gl = maybeContext;
+        } else {
+            throw new Error('No WebGL2 context available for canvas.');
+        }
     }
 
-    // Pull out a WebGL2 context.
-    const maybeContext = this.canvas.getContext('webgl2');
-    if (maybeContext != null && maybeContext instanceof WebGL2RenderingContext) {
-      this.gl = maybeContext;
-    } else {
-      throw new Error('No WebGL2 context available for canvas.');
-    }
-  }
-
-  /**
+    /**
      * Initializes the display.
      */
-  public initialize() {
+    public initialize() {
 
-  }
+    }
 
-  /**
+    /**
      * Renders a single frame.
      */
-  public doRender() {
-    this.renderer.doRender(this.gl);
-  }
+    public doRender() {
+        this.renderer.doRender(this.gl);
+    }
 
     /** Renderer. */
     private renderer : Renderer;

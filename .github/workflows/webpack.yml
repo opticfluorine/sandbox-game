@@ -12,17 +12,17 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        build-type: [ dev, prod ]
     
     steps:
     - uses: actions/checkout@v2
 
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Configure Node
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 16.x
 
-    - name: Build
+    - name: Build - ${{ matrix.build-type }}
       run: |
         yarn install
-        yarn build
+        yarn build:${{ matrix.build-type }}

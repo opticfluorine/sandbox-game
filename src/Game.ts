@@ -22,11 +22,11 @@
  * SOFTWARE.
 */
 
-import {container, singleton} from 'tsyringe';
+import { container, singleton } from 'tsyringe';
 
-import {DisplayManager} from './Display/DisplayManager';
-import {GameStateManager} from './GameState/GameStateManager';
-import {InputManager} from './Input/InputManager';
+import { DisplayManager } from './Display/DisplayManager';
+import { GameStateManager } from './GameState/GameStateManager';
+import { InputManager } from './Input/InputManager';
 
 /**
  * Main class for the game. Root of the dependency graph.
@@ -40,9 +40,9 @@ export class Game {
    * @param inputManager Input manager.
    */
     public constructor(
-        displayManager : DisplayManager,
-        gameStateManager : GameStateManager,
-        inputManager : InputManager) {
+        displayManager: DisplayManager,
+        gameStateManager: GameStateManager,
+        inputManager: InputManager) {
         this.displayManager = displayManager;
         this.gameStateManager = gameStateManager;
         this.inputManager = inputManager;
@@ -50,7 +50,7 @@ export class Game {
 
     /** Starts the game. */
     public start() {
-    // Initialize.
+        // Initialize.
         try {
             this.displayManager.initialize();
         } catch (e) {
@@ -76,6 +76,8 @@ export class Game {
                 // Advance game state by one frame.
                 game.gameStateManager.doUpdateGameState();
 
+                // Update caches, etc.
+
                 // Send outputs (rendering, audio, etc).
                 game.displayManager.doRender();
             } catch (e) {
@@ -86,13 +88,13 @@ export class Game {
     }
 
     /** Display manager. */
-    private displayManager : DisplayManager;
+    private displayManager: DisplayManager;
 
     /** Game state manager. */
-    private gameStateManager : GameStateManager;
+    private gameStateManager: GameStateManager;
 
     /** Input manager. */
-    private inputManager : InputManager;
+    private inputManager: InputManager;
 }
 
-container.register<Game>(Game, {useClass: Game});
+container.register<Game>(Game, { useClass: Game });

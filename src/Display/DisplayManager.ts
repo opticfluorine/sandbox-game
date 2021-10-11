@@ -22,12 +22,12 @@
  * SOFTWARE.
 */
 
-import {container, injectable} from 'tsyringe';
-import {Renderer} from './Renderer';
+import { container, injectable } from 'tsyringe';
+import { Renderer } from './Renderer';
 
 @injectable()
 export class DisplayManager {
-    public constructor(renderer : Renderer) {
+    public constructor(renderer: Renderer) {
         this.renderer = renderer;
 
         // Grab canvas to use for rendering.
@@ -62,13 +62,13 @@ export class DisplayManager {
     }
 
     /** Renderer. */
-    private renderer : Renderer;
+    private renderer: Renderer;
 
     /** Canvas used for rendering. */
-    private canvas : HTMLCanvasElement;
+    private canvas: HTMLCanvasElement;
 
     /** WebGL2 context associated with the canvas. */
-    private gl : WebGL2RenderingContext;
+    private gl: WebGL2RenderingContext;
 }
 
-container.register<DisplayManager>(DisplayManager, {useClass: DisplayManager});
+container.register<DisplayManager>(DisplayManager, { useClass: DisplayManager });

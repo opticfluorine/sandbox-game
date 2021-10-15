@@ -142,6 +142,9 @@ export class TextureAtlas {
             
             // Advance current position without wrapping.
             current_x += image.width;
+            if (current_x > plan.width) {
+                plan.width = current_x;
+            }
             if (image.height > current_row_height) {
                 current_row_height = image.height;
             }
